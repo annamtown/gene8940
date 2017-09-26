@@ -1,9 +1,13 @@
+#!/bin/bash
+
+cd /home/student/gene8950/s_11/projects/gene8940
+
 canu \
  -p ecoli -d ecoli-pacbio \
  genomeSize=4.8m \
  -pacbio-raw pacbio.fastq
 
- curl -L -o mix.tar.gz http://gembox.cbcb.umd.edu/mhap/raw/ecoliP6Oxford.tar.gz
+curl -L -o mix.tar.gz http://gembox.cbcb.umd.edu/mhap/raw/ecoliP6Oxford.tar.gz
 tar xvzf mix.tar.gz
 
 canu \
