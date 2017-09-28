@@ -1,39 +1,12 @@
 #!/bin/bash
 
-cd /home/student/gene8950/s_11/projects/gene8940
+cd /escratch4/s_11/s_11_Aug_17/ecoli
+
+export PATH=/usr/local/canu/1.4/Linux-amd64/bin:/usr/local/java/jdk1.8.0_74/bin:${PATH}
+export LD_LIBRARY_PATH=/usr/local/gcc/5.3.0/lib64:${LD_LIBRARY_PATH}
+export JAVA_HOME=/usr/local/java/jdk1.8.0_74
+
+curl -L -o pacbio.fastq http://gembox.cbcb.umd.edu/mhap/raw/ecoli_p6_25x.filtered.fastq
 
 canu \
- -p ecoli -d ecoli-pacbio \
- genomeSize=4.8m \
- -pacbio-raw pacbio.fastq
-
-curl -L -o mix.tar.gz http://gembox.cbcb.umd.edu/mhap/raw/ecoliP6Oxford.tar.gz
-tar xvzf mix.tar.gz
-
-canu \
- -p ecoli -d ecoli-mix \
- genomeSize=4.8m \
- -pacbio-raw pacbio.part?.fastq.gz \
- -nanopore-raw oxford.fasta.gz
-
- canu -correct \
-  -p ecoli -d ecoli \
-  genomeSize=4.8m \
-  -pacbio-raw  pacbio.fastq
-
-  canu -trim \
-  -p ecoli -d ecoli \
-  genomeSize=4.8m \
-  -pacbio-corrected ecoli/ecoli.correctedReads.fasta.gz
-
-  canu -assemble \
-  -p ecoli -d ecoli-erate-0.039 \
-  genomeSize=4.8m \
-  correctedErrorRate=0.039 \
-  -pacbio-corrected ecoli/ecoli.trimmedReads.fasta.gz
-
-canu -assemble \
-  -p ecoli -d ecoli-erate-0.075 \
-  genomeSize=4.8m \
-  correctedErrorRate=0.075 \
-  -pacbio-corrected ecoli/ecoli.trimmedReads.fasta.gz
+ -p ecoli -d ecoli-pacbio genomeSize=4.8m -pacbio-raw pacbio.fastq
