@@ -3,6 +3,8 @@
 cd /escratch4/s_11/s_11_Aug_17/refassem
 
 time /usr/local/bwa/latest/bwa
+/usr/local/bwa/latest/bwa index -p hg19 -a bwtsw hg19.fa
+
 time /usr/local/samtools/latest/bin/samtools
 
 
