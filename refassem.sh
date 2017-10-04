@@ -7,9 +7,7 @@ time /usr/local/samtools/latest/bin/samtools
 
 
 # download reference genome and unzip reference genome
-wget -q -o ref.fa.gz ftp://ftp.ensemblgenomes.org/pub/bacteria/release-37/fasta/bacteria_0_collection/
-escherichia_coli_str_k_12_substr_mg1655/dna/
-Escherichia_coli_str_k_12_substr_mg1655.ASM584v2.dna.chromosome.Chromosome.fa.gz | gunzip -c > ref.fa
+wget -q -o ref.fa.gz ftp://ftp.ensemblgenomes.org/pub/bacteria/release-37/fasta/bacteria_0_collection/escherichia_coli_str_k_12_substr_mg1655/dna/Escherichia_coli_str_k_12_substr_mg1655.ASM584v2.dna.chromosome.Chromosome.fa.gz | gunzip -c > ref.fa
 
 
 # download reads
