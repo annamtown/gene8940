@@ -2,8 +2,7 @@
 
 cd /escratch4/s_11/s_11_Aug_17/refassem
 
-time /usr/local/samtools/latest/bin/samtools
-time /usr/local/bwa/latest/bwa
+export PATH=/path/to/bwa:/path/to/samtools:/path/to/bcftools:$PATH
 
 # download reference genome and unzip reference genome
 wget -q -O ref.fa.gz ftp://ftp.ensemblgenomes.org/pub/bacteria/release-37/fasta/bacteria_0_collection/escherichia_coli_str_k_12_substr_mg1655/dna/Escherichia_coli_str_k_12_substr_mg1655.ASM584v2.dna.chromosome.Chromosome.fa.gz
