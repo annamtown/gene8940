@@ -2,7 +2,7 @@
 
 cd /escratch4/s_11/s_11_Aug_17/refassem
 
-export PATH=/usr/local/bwa/latest/bwa:/usr/local/samtools/latest/bin/samtools:/usr/local/samtools/latest/bin/samtools/bcftools:$PATH
+
 
 # download reference genome and unzip reference genome
 wget -q -O ref.fa.gz ftp://ftp.ensemblgenomes.org/pub/bacteria/release-37/fasta/bacteria_0_collection/escherichia_coli_str_k_12_substr_mg1655/dna/Escherichia_coli_str_k_12_substr_mg1655.ASM584v2.dna.chromosome.Chromosome.fa.gz
@@ -17,10 +17,10 @@ gunzip -c ref.fa.gz > ref.fa
 
 
 # create index of reference genome for BWA
-bwa index ref.fa
+/usr/local/bwa/latest/bwa index ref.fa
 
 # map reads to reference with BWA & output as BAM file
-bwa mem -t 4 ref.fa s_6_1.fastq.gz s_6_2.fastq.gz | samtools view -b - > aln.bam
+/usr/local/bwa/latest/bwa mem -t 4 ref.fa s_6_1.fastq.gz s_6_2.fastq.gz | samtools view -b - > aln.bam
 
 
 
