@@ -26,10 +26,10 @@ python2.7 /usr/local/quast/3.1/quast.py -o /escratch4/s_11/s_11_Aug_17/genome_ev
 
 # make mummerplots for reference-based, Pacbio and Spades assemblies using Ensembl MG1655 as reference
 # need to run the 3 following lines for each assembly
-nucmer -o /escratch4/s_11/s_11_Aug_17/genome_eval/ref_ecoli.fa /path/to/assembly -p outputfile_prefix
+nucmer -o /escratch4/s_11/s_11_Aug_17/genome_eval/ref_ecoli.fa /escratch4/s_11/s_11_Aug_17/genome_eval -p outputfile_prefix
 delta-filter -1 outputfile_prefix.delta > outputfile_prefix.1delta
 mummerplot --size large -fat --color -f --png outputfile_prefix.1delta -p outputfile_prefix
 
 # generate Prokka genome annotations for reference-based, Pacbio and Spades assemblies using Ensembl MG1655 as reference
 # need to run the 3 following lines for each assembly
-prokka /path/to/assembly --outdir prokka_directory
+prokka /escratch4/s_11/s_11_Aug_17/genome_eval --outdir prokka_directory
