@@ -16,10 +16,10 @@ gunzip -c ref.fa.gz > ref.fa
 
 
 # create index of reference genome for BWA
-/usr/local/bwa/0.7.10 index ref.fa
+/usr/local/bwa/0.7.10/bwa/ index ref.fa
 
 # map reads to reference with BWA & output as BAM file
-/usr/local/bwa/0.7.10 mem -t 4 ref.fa s_6_1.fastq.gz s_6_2.fastq.gz | samtools view -b - > aln.bam
+/usr/local/bwa/0.7.10/bwa/ mem -t 4 ref.fa s_6_1.fastq.gz s_6_2.fastq.gz | samtools view -b - > aln.bam
 
 
 
