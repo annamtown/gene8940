@@ -6,7 +6,7 @@ cd /escratch4/s_11/s_11_Aug_17/genome_eval
 export PATH=/usr/local/mummer/3.22/:$PATH
 
 # put the Prokka executable and its dependencies in your $PATH
-export PATH=/usr/local/prokka/1.11/:/usr/local/hmmer/2.3.2/:/usr/local/rnammer/latest/:/usr/local/tbl2asn/01052015:/usr/local/signalp/4.1c/:/usr/local/parallel/20150822:$PATH
+export PATH=/usr/local/prokka/1.11/bin/prokka/:/usr/local/hmmer/2.3.2/:/usr/local/rnammer/1.2/:/usr/local/tbl2asn/01052015:/usr/local/signalp/4.1c/:/usr/local/parallel/20150822:$PATH
 
 # download Ensembl MG1655 reference genome
 wget -q -O ref_ecoli.fa.gz ftp://ftp.ensemblgenomes.org/pub/bacteria/release-37/fasta/bacteria_0_collection/escherichia_coli_str_k_12_substr_mg1655/dna/Escherichia_coli_str_k_12_substr_mg1655.ASM584v2.dna.chromosome.Chromosome.fa.gz
