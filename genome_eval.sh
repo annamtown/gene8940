@@ -40,12 +40,12 @@ mummerplot --size large -fat --color -f --png outputspades_prefix.1delta -p outp
 # generate Prokka genome annotations for reference-based, Pacbio and Spades assemblies using Ensembl MG1655 as reference
 # need to run the following lines for each assembly
 #reference-based
-prokka /escratch4/s_11/s_11_Aug_17/refassem/consensus.fa --outdir prokka_directory
+prokka /escratch4/s_11/s_11_Aug_17/refassem/consensus.fa --outdir prokka_directory_ref
 
 #pacbio
-prokka /escratch4/s_11/s_11_Aug_17/ecoli/ecoli-pacbio/ecoli.contigs.fasta --outdir prokka_directory
+prokka /escratch4/s_11/s_11_Aug_17/ecoli/ecoli-pacbio/ecoli.contigs.fasta --outdir prokka_directory_pacbio
 
 #spades
-prokka /escratch4/s_11/s_11_Aug_17/genome_eval/scaffolds.fasta --outdir prokka_directory
+prokka /escratch4/s_11/s_11_Aug_17/genome_eval/scaffolds.fasta --outdir prokka_directory_spades
 
 #clean up script by removing files
