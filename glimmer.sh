@@ -1,4 +1,7 @@
 #!/bin/bash
+#$ -o /home/student/pbio4550/s_74/vcholerae_genome
+#$ -e /home/student/pbio4550/s_74/vcholerae_genome
+
 
 cd /home/student/pbio4550/s_74/vcholerae_genome/Vcholera_spades
 
