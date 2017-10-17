@@ -1,12 +1,9 @@
 #!/bin/bash
-#$ -o /home/student/pbio4550/s_74/vcholerae_genome
-#$ -e /home/student/pbio4550/s_74/vcholerae_genome
-
 
 cd /home/student/pbio4550/s_74/vcholerae_genome/Vcholera_spades
 
-export /usr/local/glimmer/3.0.2/:$PATH
+export /usr/local/glimmer/latest/bin/glimmer3/:$PATH
 
-glimmer3 scaffolds.fasta scaffolds.output scaffolds.predict
+glimmer3 scaffolds.fasta scaffolds.icm scaffolds
 
-glimmer3 contigs.fasta contigs.output contigs.predict
+glimmer3 contigs.fasta contigs.com contigs
