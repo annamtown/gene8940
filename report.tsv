@@ -1,0 +1,39 @@
+Assembly	consensus	ecoli.contigs	scaffolds
+# contigs (>= 0 bp)	1	1	126
+# contigs (>= 1000 bp)	1	1	74
+Total length (>= 0 bp)	4641652	4630757	4576629
+Total length (>= 1000 bp)	4641652	4630757	4555964
+# contigs	1	1	90
+Largest contig	4641652	4630757	285561
+Total length	4641652	4630757	4567589
+Reference length	4641652	4641652	4641652
+GC (%)	50.79	50.76	50.74
+Reference GC (%)	50.79	50.79	50.79
+N50	4641652	4630757	133353
+NG50	4641652	4630757	133353
+N75	4641652	4630757	78649
+NG75	4641652	4630757	67384
+L50	1	1	12
+LG50	1	1	12
+L75	1	1	22
+LG75	1	1	23
+# misassemblies	0	2	1
+# misassembled contigs	0	1	1
+Misassembled contigs length	0	4630757	200922
+# local misassemblies	0	2	16
+# unaligned contigs	0 + 0 part	0 + 0 part	4 + 0 part
+Unaligned length	0	0	2947
+Genome fraction (%)	100.000	99.806	98.288
+Duplication ratio	1.000	1.000	1.001
+# N's per 100 kbp	0.00	0.00	8.47
+# mismatches per 100 kbp	0.00	0.65	2.83
+# indels per 100 kbp	0.00	78.66	0.39
+Largest alignment	4641652	3966642	285462
+NA50	4641652	3966642	133353
+NGA50	4641652	3966642	133353
+NA75	4641652	3966642	67384
+NGA75	4641652	3966642	64350
+LA50	1	1	12
+LGA50	1	1	12
+LA75	1	1	23
+LGA75	1	1	24
