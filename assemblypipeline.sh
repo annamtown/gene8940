@@ -11,8 +11,20 @@ export JAVA_HOME=/usr/local/java/jdk1.8.0_74
 export PATH=/usr/local/samtools/1.2/:$PATH
 export PATH=/usr/local/bwa/0.7.10/:$PATH
 
-#path for mummer executables
+#path for analysis executables
 export PATH=/usr/local/mummer/3.22/:$PATH
+export PATH=/usr/local/prokka/1.11/bin/:/usr/local/hmmer/2.3.2/bin/:/usr/local/rnammer/latest/:/usr/local/tbl2asn/01052015:/usr/local/signalp/4.1c/:/usr/local/parallel/20150822/bin:$PATH
+
+
+
+#PACBIO ASSEMBLY
+
+curl -L -o pacbio.fastq http://gembox.cbcb.umd.edu/mhap/raw/ecoli_p6_25x.filtered.fastq
+
+canu -p ecoli -d ecoli-pacbio genomeSize=4.8m -pacbio-raw pacbio.fastq useGrid=false
+
+
+
 
 #REFERENCE ASSEMBLY
 
@@ -48,4 +60,47 @@ bcftools index aln.sort.vcf.gz
 bcftools consensus -f ref.fa aln.sort.vcf.gz > consensus.fa
 
 
-#PACBIO ASSEMBLY
+
+
+
+#GET SPADES ASSEMBLY
+
+# download Spades Illumina E. coli assembly
+wget -q http://bergmanlab.genetics.uga.edu/data/downloads/gene8940/scaffolds.fasta
+
+
+
+
+
+#ANALYSIS OF ASSEMBLIES
+
+# run QUAST 3.1 on reference-based, Pacbio and Spades assemblies using Ensembl MG1655 as reference
+python2.7 /usr/local/quast/3.1/quast.py -o /escratch4/s_11/s_11_Aug_17/assemblypipeline/quast_output -R /escratch4/s_11/s_11_Aug_17/assemblypipeline/ref_ecoli.fa /escratch4/s_11/s_11_Aug_17/assemblypipeline/consensus.fa /escratch4/s_11/s_11_Aug_17/ecoli/assemblypipeline/ecoli.contigs.fasta /escratch4/s_11/s_11_Aug_17/assemblypipeline/scaffolds.fasta
+
+# make mummerplots for reference-based, Pacbio and Spades assemblies using Ensembl MG1655 as reference
+# need to run the 3 following lines for each assembly
+#reference based (refassem)
+nucmer -o /escratch4/s_11/s_11_Aug_17/assemblypipeline/ref_ecoli.fa /escratch4/s_11/s_11_Aug_17/assemblypipeline/consensus.fa -p outputref_prefix
+delta-filter -1 outputref_prefix.delta > outputref_prefix.1delta
+mummerplot --size large -fat --color -f --png outputref_prefix.1delta -p outputref_prefix
+
+#pacbio (canu)
+nucmer -o /escratch4/s_11/s_11_Aug_17/assemblypipeline/ref_ecoli.fa /escratch4/s_11/s_11_Aug_17/ecoli/assemblypipeline/ecoli.contigs.fasta -p outputpacbio_prefix
+delta-filter -1 outputpacbio_prefix.delta > outputpacbio_prefix.1delta
+mummerplot --size large -fat --color -f --png outputpacbio_prefix.1delta -p outputpacbio_prefix
+
+#spades
+nucmer -o /escratch4/s_11/s_11_Aug_17/assemblypipeline/ref_ecoli.fa /escratch4/s_11/s_11_Aug_17/assemblypipeline/scaffolds.fasta -p outputspades_prefix
+delta-filter -1 outputspades_prefix.delta > outputspades_prefix.1delta
+mummerplot --size large -fat --color -f --png outputspades_prefix.1delta -p outputspades_prefix
+
+# generate Prokka genome annotations for reference-based, Pacbio and Spades assemblies using Ensembl MG1655 as reference
+# need to run the following lines for each assembly
+#reference-based
+prokka /escratch4/s_11/s_11_Aug_17/assemblypipeline/consensus.fa --outdir prokka_directory_ref
+
+#pacbio
+prokka /escratch4/s_11/s_11_Aug_17/ecoli/assemblypipeline/ecoli.contigs.fasta --outdir prokka_directory_pacbio
+
+#spades
+prokka /escratch4/s_11/s_11_Aug_17/assemblypipeline/scaffolds.fasta --outdir prokka_directory_spades
