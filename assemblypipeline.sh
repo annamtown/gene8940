@@ -1,4 +1,5 @@
 #!/bin/bash
+#$ -pe thread 4
 
 cd /escratch4/s_11/s_11_Aug_17/assemblypipeline
 
