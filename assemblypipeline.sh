@@ -70,11 +70,16 @@ bcftools consensus -f ref.fa aln.sort.vcf.gz > consensus.fa
 wget -q http://bergmanlab.genetics.uga.edu/data/downloads/gene8940/scaffolds.fasta
 
 
+# get reference genome and decompress
+# download Ensembl MG1655 reference genome
+wget -q -O ref_ecoli.fa.gz ftp://ftp.ensemblgenomes.org/pub/bacteria/release-37/fasta/bacteria_0_collection/escherichia_coli_str_k_12_substr_mg1655/dna/Escherichia_coli_str_k_12_substr_mg1655.ASM584v2.dna.chromosome.Chromosome.fa.gz
+
+#unzip reference genome
+gunzip -c ref_ecoli.fa.gz > ref_ecoli.fa
 
 
 
 #ANALYSIS OF ASSEMBLIES
-
 # run QUAST 3.1 on reference-based, Pacbio and Spades assemblies using Ensembl MG1655 as reference
 python2.7 /usr/local/quast/3.1/quast.py -o /escratch4/s_11/s_11_Aug_17/assemblypipeline/quast_output -R /escratch4/s_11/s_11_Aug_17/assemblypipeline/ref_ecoli.fa /escratch4/s_11/s_11_Aug_17/assemblypipeline/consensus.fa /escratch4/s_11/s_11_Aug_17/ecoli/assemblypipeline/ecoli.contigs.fasta /escratch4/s_11/s_11_Aug_17/assemblypipeline/scaffolds.fasta
 
