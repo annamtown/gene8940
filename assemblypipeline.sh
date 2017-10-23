@@ -81,7 +81,7 @@ gunzip -c ref_ecoli.fa.gz > ref_ecoli.fa
 
 #ANALYSIS OF ASSEMBLIES
 # run QUAST 3.1 on reference-based, Pacbio and Spades assemblies using Ensembl MG1655 as reference
-python2.7 /usr/local/quast/3.1/quast.py -o /escratch4/s_11/s_11_Aug_17/assemblypipeline/quast_output -R /escratch4/s_11/s_11_Aug_17/assemblypipeline/ref_ecoli.fa /escratch4/s_11/s_11_Aug_17/assemblypipeline/consensus.fa /escratch4/s_11/s_11_Aug_17/ecoli/assemblypipeline/ecoli.contigs.fasta /escratch4/s_11/s_11_Aug_17/assemblypipeline/scaffolds.fasta
+python2.7 /usr/local/quast/3.1/quast.py -o /escratch4/s_11/s_11_Aug_17/assemblypipeline/quast_output -R /escratch4/s_11/s_11_Aug_17/assemblypipeline/ref_ecoli.fa /escratch4/s_11/s_11_Aug_17/assemblypipeline/consensus.fa /escratch4/s_11/s_11_Aug_17/ecoli/assemblypipeline/ecolicontigs.fasta /escratch4/s_11/s_11_Aug_17/assemblypipeline/scaffolds.fasta
 
 # make mummerplots for reference-based, Pacbio and Spades assemblies using Ensembl MG1655 as reference
 # need to run the 3 following lines for each assembly
@@ -91,7 +91,7 @@ delta-filter -1 outputref_prefix.delta > outputref_prefix.1delta
 mummerplot --size large -fat --color -f --png outputref_prefix.1delta -p outputref_prefix
 
 #pacbio (canu)
-nucmer -o /escratch4/s_11/s_11_Aug_17/assemblypipeline/ref_ecoli.fa /escratch4/s_11/s_11_Aug_17/ecoli/assemblypipeline/ecoli.contigs.fasta -p outputpacbio_prefix
+nucmer -o /escratch4/s_11/s_11_Aug_17/assemblypipeline/ref_ecoli.fa /escratch4/s_11/s_11_Aug_17/ecoli/assemblypipeline/ecolicontigs.fasta -p outputpacbio_prefix
 delta-filter -1 outputpacbio_prefix.delta > outputpacbio_prefix.1delta
 mummerplot --size large -fat --color -f --png outputpacbio_prefix.1delta -p outputpacbio_prefix
 
@@ -103,10 +103,10 @@ mummerplot --size large -fat --color -f --png outputspades_prefix.1delta -p outp
 # generate Prokka genome annotations for reference-based, Pacbio and Spades assemblies using Ensembl MG1655 as reference
 # need to run the following lines for each assembly
 #reference-based
-prokka /escratch4/s_11/s_11_Aug_17/assemblypipeline/consensus.fa --outdir prokka_directory_ref
+prokka /escratch4/s_11/s_11_Aug_17/assemblypipeline/consensus.fa --outdir prokka_ref
 
 #pacbio
-prokka /escratch4/s_11/s_11_Aug_17/ecoli/assemblypipeline/ecoli.contigs.fasta --outdir prokka_directory_pacbio
+prokka /escratch4/s_11/s_11_Aug_17/ecoli/assemblypipeline/ecolicontigs.fasta --outdir prokka_pacbio
 
 #spades
-prokka /escratch4/s_11/s_11_Aug_17/assemblypipeline/scaffolds.fasta --outdir prokka_directory_spades
+prokka /escratch4/s_11/s_11_Aug_17/assemblypipeline/scaffolds.fasta --outdir prokka_spades
