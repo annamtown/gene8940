@@ -12,10 +12,6 @@ export JAVA_HOME=/usr/local/java/jdk1.8.0_74
 export PATH=/usr/local/samtools/1.2/:$PATH
 export PATH=/usr/local/bwa/0.7.10/:$PATH
 
-#path for analysis executables
-export PATH=/usr/local/mummer/3.22/:$PATH
-export PATH=/usr/local/prokka/1.11/bin/:/usr/local/hmmer/2.3.2/bin/:/usr/local/rnammer/latest/:/usr/local/tbl2asn/01052015:/usr/local/signalp/4.1c/:/usr/local/parallel/20150822/bin:$PATH
-
 
 
 #PACBIO ASSEMBLY
@@ -63,6 +59,13 @@ bcftools consensus -f ref.fa aln.sort.vcf.gz > consensus.fa
 
 
 cd /escratch4/s_11/s_11_Aug_17/assemblypipeline
+
+
+# put the mummer executables in your $PATH
+export PATH=/usr/local/mummer/3.22/:$PATH
+
+# put the Prokka executable and its dependencies in your $PATH
+export PATH=/usr/local/prokka/1.11/bin/:/usr/local/hmmer/2.3.2/bin/:/usr/local/rnammer/latest/:/usr/local/tbl2asn/01052015:/usr/local/signalp/4.1c/:/usr/local/parallel/20150822/bin:$PATH
 
 #GET SPADES ASSEMBLY
 
