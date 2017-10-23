@@ -62,7 +62,7 @@ bcftools consensus -f ref.fa aln.sort.vcf.gz > consensus.fa
 
 
 
-
+cd /escratch4/s_11/s_11_Aug_17/assemblypipeline
 
 #GET SPADES ASSEMBLY
 
