@@ -8,5 +8,4 @@ export JAVA_HOME=/usr/local/java/jdk1.8.0_74
 
 curl -L -o pacbio.fastq http://gembox.cbcb.umd.edu/mhap/raw/ecoli_p6_25x.filtered.fastq
 
-canu \
- -p ecoli -d ecoli-pacbio genomeSize=4.8m -pacbio-raw pacbio.fastq useGrid=false
+canu -p ecoli -d ecoli-pacbio genomeSize=4.8m -pacbio-raw pacbio.fastq useGrid=false

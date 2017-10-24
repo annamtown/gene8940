@@ -94,7 +94,7 @@ mummerplot --size large -fat --color -f --png outputpacbio_prefix.1delta -p outp
 nucmer -o /escratch4/s_11/s_11_Aug_17/pipeline2/reference/ref.fa /escratch4/s_11/s_11_Aug_17/pipeline2/spades/scaffolds.fasta -p outputspades_prefix
 delta-filter -1 outputspades_prefix.delta > outputspades_prefix.1delta
 mummerplot --size large -fat --color -f --png outputspades_prefix.1delta -p outputspades_prefix
-
+3
 # generate Prokka genome annotations for reference-based, Pacbio and Spades assemblies using Ensembl MG1655 as reference
 # need to run the following lines for each assembly
 #reference-based
