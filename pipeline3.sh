@@ -50,13 +50,13 @@ bcftools consensus -f ref.fa aln.sort.vcf.gz > consensus.fa
 
 cd /escratch4/s_11/s_11_Aug_17/pipeline3
 
-export PATH=/usr/local/canu/1.4/Linux-amd64/bin:/usr/local/java/jdk1.8.0_74/bin:${PATH}
-export LD_LIBRARY_PATH=/usr/local/gcc/5.3.0/lib64:${LD_LIBRARY_PATH}
-export JAVA_HOME=/usr/local/java/jdk1.8.0_74
+export PATH=/usr/local/canu/1.4/Linux-amd64/bin:/usr/local/java/jdk1.8.0_74/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/gcc/5.3.0/lib64:$PATH
+export JAVA_HOME=/usr/local/java/jdk1.8.0_74:$PATH
 
 curl -L -o pacbio.fastq http://gembox.cbcb.umd.edu/mhap/raw/ecoli_p6_25x.filtered.fastq
 
-canu -p ecoli genomeSize=4.8m -pacbio-raw pacbio.fastq useGrid=false
+canu -p ecoli -d ecoli-pacbio genomeSize=4.8m -pacbio-raw pacbio.fastq useGrid=false
 
 
 
@@ -78,7 +78,7 @@ gunzip -c ref_ecoli.fa.gz > ref_ecoli.fa
 wget -q http://bergmanlab.genetics.uga.edu/data/downloads/gene8940/scaffolds.fasta
 
 # run QUAST 3.1 on reference-based, Pacbio and Spades assemblies using Ensembl MG1655 as reference
-python2.7 /usr/local/quast/3.1/quast.py -o /escratch4/s_11/s_11_Aug_17/pipeline3/quast_output -R /escratch4/s_11/s_11_Aug_17/pipeline3/ref_ecoli.fa /escratch4/s_11/s_11_Aug_17/pipeline3/consensus.fa /escratch4/s_11/s_11_Aug_17/pipeline3/ecoli.contigs.fasta /escratch4/s_11/s_11_Aug_17/pipeline3/scaffolds.fasta
+python2.7 /usr/local/quast/3.1/quast.py -o /escratch4/s_11/s_11_Aug_17/pipeline3/quast_output -R /escratch4/s_11/s_11_Aug_17/pipeline3/ref_ecoli.fa /escratch4/s_11/s_11_Aug_17/pipeline3/consensus.fa /escratch4/s_11/s_11_Aug_17/pipeline3/ecoli-pacbio/ecoli.contigs.fasta /escratch4/s_11/s_11_Aug_17/pipeline3/scaffolds.fasta
 
 # make mummerplots for reference-based, Pacbio and Spades assemblies using Ensembl MG1655 as reference
 # need to run the 3 following lines for each assembly
@@ -88,7 +88,7 @@ delta-filter -1 outputref_prefix.delta > outputref_prefix.1delta
 mummerplot --size large -fat --color -f --png outputref_prefix.1delta -p outputref_prefix
 
 #pacbio (canu)
-nucmer -o /escratch4/s_11/s_11_Aug_17/pipeline3/ref_ecoli.fa /escratch4/s_11/s_11_Aug_17/pipeline3/ecoli.contigs.fasta -p outputpacbio_prefix
+nucmer -o /escratch4/s_11/s_11_Aug_17/pipeline3/ref_ecoli.fa /escratch4/s_11/s_11_Aug_17/pipeline3/ecoli-pacbio/ecoli.contigs.fasta -p outputpacbio_prefix
 delta-filter -1 outputpacbio_prefix.delta > outputpacbio_prefix.1delta
 mummerplot --size large -fat --color -f --png outputpacbio_prefix.1delta -p outputpacbio_prefix
 
@@ -103,7 +103,7 @@ mummerplot --size large -fat --color -f --png outputspades_prefix.1delta -p outp
 prokka /escratch4/s_11/s_11_Aug_17/pipeline3/consensus.fa --outdir prokka_directory_ref
 
 #pacbio
-prokka /escratch4/s_11/s_11_Aug_17/pipeline3/ecoli.contigs.fasta --outdir prokka_directory_pacbio
+prokka /escratch4/s_11/s_11_Aug_17/pipeline3/ecoli-pacbio/ecoli.contigs.fasta --outdir prokka_directory_pacbio
 
 #spades
 prokka /escratch4/s_11/s_11_Aug_17/pipeline3/scaffolds.fasta --outdir prokka_directory_spades
