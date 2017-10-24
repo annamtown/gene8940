@@ -86,7 +86,7 @@ delta-filter -1 outputref_prefix.delta > outputref_prefix.1delta
 mummerplot --size large -fat --color -f --png outputref_prefix.1delta -p outputref_prefix
 
 #pacbio (canu)
-nucmer -o /escratch4/s_11/s_11_Aug_17/pipeline2/ref.fa /escratch4/s_11/s_11_Aug_17/ecoli/pipeline2/pacbio/ecoli.contigs.fasta -p outputpacbio_prefix
+nucmer -o /escratch4/s_11/s_11_Aug_17/pipeline2/ref.fa /escratch4/s_11/s_11_Aug_17/ecoli/pipeline2/pacbio/ecoli-pacbio/ecoli.contigs.fasta -p outputpacbio_prefix
 delta-filter -1 outputpacbio_prefix.delta > outputpacbio_prefix.1delta
 mummerplot --size large -fat --color -f --png outputpacbio_prefix.1delta -p outputpacbio_prefix
 
@@ -101,7 +101,7 @@ mummerplot --size large -fat --color -f --png outputspades_prefix.1delta -p outp
 prokka /escratch4/s_11/s_11_Aug_17/pipeline2/reference/consensus.fa --outdir prokka_ref
 
 #pacbio
-prokka /escratch4/s_11/s_11_Aug_17/ecoli/pipeline2/pacbio/ecoli.contigs.fasta --outdir prokka_pacbio
+prokka /escratch4/s_11/s_11_Aug_17/ecoli/pipeline2/pacbio/ecoli-pacbio/ecoli.contigs.fasta --outdir prokka_pacbio
 
 #spades
 prokka /escratch4/s_11/s_11_Aug_17/pipeline2/spades/scaffolds.fasta --outdir prokka_spades
