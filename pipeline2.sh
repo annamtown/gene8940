@@ -76,22 +76,22 @@ export PATH=/usr/local/mummer/3.22/:$PATH
 export PATH=/usr/local/prokka/1.11/bin/:/usr/local/hmmer/2.3.2/bin/:/usr/local/rnammer/latest/:/usr/local/tbl2asn/01052015:/usr/local/signalp/4.1c/:/usr/local/parallel/20150822/bin:$PATH
 
 # run QUAST 3.1 on reference-based, Pacbio and Spades assemblies using Ensembl MG1655 as reference
-python2.7 /usr/local/quast/3.1/quast.py -o /escratch4/s_11/s_11_Aug_17/pipeline2/quast_output -R /escratch4/s_11/s_11_Aug_17/pipeline2/reference/ref.fa /escratch4/s_11/s_11_Aug_17/pipeline2/reference/consensus.fa /escratch4/s_11/s_11_Aug_17/ecoli/pipeline2/pacbio/ecoli.contigs.fasta /escratch4/s_11/s_11_Aug_17/pipeline2/spades/scaffolds.fasta
+python2.7 /usr/local/quast/3.1/quast.py -o /escratch4/s_11/s_11_Aug_17/pipeline2/quast_output -R /escratch4/s_11/s_11_Aug_17/pipeline2/reference/ref.fa /escratch4/s_11/s_11_Aug_17/pipeline2/reference/consensus.fa /escratch4/s_11/s_11_Aug_17/ecoli/pipeline2/pacbio/ecoli-pacbio/ecoli.contigs.fasta /escratch4/s_11/s_11_Aug_17/pipeline2/spades/scaffolds.fasta
 
 # make mummerplots for reference-based, Pacbio and Spades assemblies using Ensembl MG1655 as reference
 # need to run the 3 following lines for each assembly
 #reference based (refassem)
-nucmer -o /escratch4/s_11/s_11_Aug_17/pipeline2/ref.fa /escratch4/s_11/s_11_Aug_17/pipeline2/reference/consensus.fa -p outputref_prefix
+nucmer -o /escratch4/s_11/s_11_Aug_17/pipeline2/reference/ref.fa /escratch4/s_11/s_11_Aug_17/pipeline2/reference/consensus.fa -p outputref_prefix
 delta-filter -1 outputref_prefix.delta > outputref_prefix.1delta
 mummerplot --size large -fat --color -f --png outputref_prefix.1delta -p outputref_prefix
 
 #pacbio (canu)
-nucmer -o /escratch4/s_11/s_11_Aug_17/pipeline2/ref.fa /escratch4/s_11/s_11_Aug_17/ecoli/pipeline2/pacbio/ecoli-pacbio/ecoli.contigs.fasta -p outputpacbio_prefix
+nucmer -o /escratch4/s_11/s_11_Aug_17/pipeline2/reference/ref.fa /escratch4/s_11/s_11_Aug_17/ecoli/pipeline2/pacbio/ecoli-pacbio/ecoli.contigs.fasta -p outputpacbio_prefix
 delta-filter -1 outputpacbio_prefix.delta > outputpacbio_prefix.1delta
 mummerplot --size large -fat --color -f --png outputpacbio_prefix.1delta -p outputpacbio_prefix
 
 #spades
-nucmer -o /escratch4/s_11/s_11_Aug_17/pipeline2/ref.fa /escratch4/s_11/s_11_Aug_17/pipeline2/spades/scaffolds.fasta -p outputspades_prefix
+nucmer -o /escratch4/s_11/s_11_Aug_17/pipeline2/reference/ref.fa /escratch4/s_11/s_11_Aug_17/pipeline2/spades/scaffolds.fasta -p outputspades_prefix
 delta-filter -1 outputspades_prefix.delta > outputspades_prefix.1delta
 mummerplot --size large -fat --color -f --png outputspades_prefix.1delta -p outputspades_prefix
 
