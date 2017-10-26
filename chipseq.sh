@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#$ -pe thread 6
+
 cd /escratch4/s_11/s_11_Aug_17/chipseq
 
 #path to bowtie2 2.2.3
