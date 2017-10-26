@@ -14,7 +14,7 @@ export PATH=/usr/local/macs/1.4.2:$PATH
 export PATH=/usr/local/samtools/1.2:$PATH
 
 #path to BEDTools 2.25.0
-export PATH=/usr/local/bedtools/2.25.0:$PATH
+export PATH=/usr/local/bedtools/2.25.0/bin/bedtools:$PATH
 
 #path to MEME 4.10.0
 export PATH=/usr/local/meme/4.10.0:$PATH
