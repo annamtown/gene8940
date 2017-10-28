@@ -7,14 +7,14 @@ cd /escratch4/s_11/s_11_Aug_17/chipseq
 #path to bowtie2 2.2.3
 export PATH=/usr/local/bowtie2/2.2.3:$PATH
 
-#path to Macs 1.4.2
-export PATH=/usr/local/macs/1.4.2:$PATH
+#path to Macs 1.4.2, "latest" points to this version
+export PATH=/usr/local/macs/latest/bin/macs14:$PATH
 
 #path to samtools
 export PATH=/usr/local/samtools/1.2:$PATH
 
-#path to BEDTools 2.25.0
-export PATH=/usr/local/bedtools/2.25.0/bin/bedtools:$PATH
+#path to BEDTools 2.25.0, "latest" points to this version
+export PATH=/usr/local/bedtools/latest/bin/bedtools:$PATH
 
 #path to MEME 4.10.0
 export PATH=/usr/local/meme/4.10.0:$PATH
@@ -41,17 +41,17 @@ bowtie2 -x ref_index_prefix -U SRR576933.fastq.gz -k 1 --threads 6 | samtools vi
 bowtie2 -x ref_index_prefix -U SRR576938.fastq.gz -k 1 --threads 6 | samtools view -b - > input.bam
 
 # predict FNR binding regions using MACS
-macs14 -t chip.bam -c input.bam --format BAM --gsize 4641652 --name "FNR" --bw 400 --keep-dup 1 --bdg --single-profile &> MACS.out
+macs14 -t chip.bam -c input.bam -f BAM -g 4641652 -n "FNR" --bw=400 --keep-dup=1 --bdg --single-profile &> MACS.out
 
 # get fasta sequences of the extended peak binding regions in the summit file using BEDtools:
 #index the reference genome with `samtools faidx`
 samtools faidx ref.fa
 
 # add ±100 bp to the FNR_summits.bed using `bedtools slop`
-bedtools slop -i FNR_summits.bed -g ref.fa -b 100
+bedtools slop -i FNR_summits.bed -g ref.fa.fai -b 100
 
 #extract fasta sequences for ±100 bp FNR_summits using `bedtools getfasta`
-bedtools getfasta -fi ref.fa -bed FNR_summits.bed
+bedtools getfasta -fi ref.fa.fai -bed FNR_summits.bed
 
 # predict FNR binding motif using MEME
 meme -dna -mod zoops -revcomp FNR_summits_100.fa -minw 5 -maxw 15 -o FNR
