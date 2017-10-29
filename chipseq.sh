@@ -8,16 +8,17 @@ cd /escratch4/s_11/s_11_Aug_17/chipseq
 export PATH=/usr/local/bowtie2/2.2.3:$PATH
 
 #path to Macs 1.4.2, "latest" points to this version
-export PATH=/usr/local/macs/latest/bin/macs14:$PATH
+export PATH=/usr/local/macs/latest/bin:$PATH
 
 #path to samtools
 export PATH=/usr/local/samtools/1.2:$PATH
 
-#path to BEDTools 2.25.0, "latest" points to this version
-export PATH=/usr/local/bedtools/latest/bin/bedtools:$PATH
+#path to BEDTools 2.25.0
+export PATH=/usr/local/bedtools/2.25.0/bin:$PATH
 
 #path to MEME 4.10.0
-export PATH=/usr/local/meme/4.10.0:$PATH
+export LD_LIBRARY_PATH=/usr/local/mpich2/1.4.1p1/gcc_4.5.3/lib:$PATH
+export PATH=/usr/local/meme/latest/bin:$PATH
 
 # download Ensembl MG1655 reference genome
 wget -q -O ref.fa.gz ftp://ftp.ensemblgenomes.org/pub/bacteria/release-37/fasta/bacteria_0_collection/escherichia_coli_str_k_12_substr_mg1655/dna/Escherichia_coli_str_k_12_substr_mg1655.ASM584v2.dna.chromosome.Chromosome.fa.gz
@@ -48,10 +49,10 @@ macs14 -t chip.bam -c input.bam -f BAM -g 4641652 -n "FNR" --bw=400 --keep-dup=1
 samtools faidx ref.fa
 
 # add ±100 bp to the FNR_summits.bed using `bedtools slop`
-bedtools slop -i FNR_summits.bed -g ref.fa.fai -b 100
+/usr/local/bedtools/2.25.0/bin/bedtools slop -i FNR_summits.bed -g ref.fa.fai -b 100
 
 #extract fasta sequences for ±100 bp FNR_summits using `bedtools getfasta`
-bedtools getfasta -fi ref.fa.fai -bed FNR_summits.bed
+/usr/local/bedtools/2.25.0/bin/bedtools getfasta -fi ref.fa -bed FNR_summits.bed -fo FNR_summits_100.fa
 
 # predict FNR binding motif using MEME
 meme -dna -mod zoops -revcomp FNR_summits_100.fa -minw 5 -maxw 15 -o FNR
