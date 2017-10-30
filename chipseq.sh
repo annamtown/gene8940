@@ -1,7 +1,6 @@
 #!/bin/bash
 
 #$ -pe thread 6
-#$ -pe mpi 4
 
 cd /escratch4/s_11/s_11_Aug_17/chipseq
 
@@ -50,10 +49,12 @@ macs14 -t chip.bam -c input.bam -f BAM -g 4641652 -n "FNR" --bw=400 --keep-dup=1
 samtools faidx ref.fa
 
 # add ±100 bp to the FNR_summits.bed using `bedtools slop`
-/usr/local/bedtools/2.25.0/bin/bedtools slop -i FNR_summits.bed -g ref.fa.fai -b 100
+bedtools slop -i FNR_summits.bed -g ref.fa.fai -b 100
 
 #extract fasta sequences for ±100 bp FNR_summits using `bedtools getfasta`
-/usr/local/bedtools/2.25.0/bin/bedtools getfasta -fi ref.fa -bed FNR_summits.bed -fo FNR_summits_100.fa
+bedtools getfasta -fi ref.fa -bed FNR_summits.bed -fo FNR_summits_100.fa
+
+#$ -pe mpi 4
 
 # predict FNR binding motif using MEME
 meme -dna -mod zoops -revcomp FNR_summits_100.fa -minw 5 -maxw 15 -o FNR
