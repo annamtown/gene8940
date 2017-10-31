@@ -52,7 +52,7 @@ samtools faidx ref.fa
 bedtools slop -b 100 -i FNR_summits.bed -g ref.fa.fai > FNR_summits_100.bed
 
 #extract fasta sequences for ±100 bp FNR_summits using `bedtools getfasta`
-bedtools getfasta -fo FNR_summits_100.fa -fi ref.fa.fai -bed FNR_summits_100.bed
+bedtools getFastaFromBed -fo FNR_summits_100.fa -fi ref.fa.fai -bed FNR_summits_100.bed
 
 # predict FNR binding motif using MEME
 meme -dna -mod zoops -revcomp FNR_summits_100.fa -minw 5 -maxw 15 -o FNR
