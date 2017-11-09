@@ -111,29 +111,50 @@ samtools index ERR338288.aln.sort.bam
 samtools index ERR338255.aln.sort.bam
 
 
-# generate genotype likelihoods with `samtools mpileup` and base calls with `bcftools call`, output as VCF; index VCF file
-samtools mpileup -u -f ref.fa ERR369378.aln.sort.bam | bcftools call -c -O z -o ERR369378.aln.sort.vcf.gz | bcftools index
+# generate genotype likelihoods with `samtools mpileup` and base calls with `bcftools call`, output as VCF;
+samtools mpileup -u -f ref.fa ERR369378.aln.sort.bam | bcftools call -c -O z -o ERR369378.aln.sort.vcf.gz
 
-samtools mpileup -u -f ref.fa ERR369348.aln.sort.bam | bcftools call -c -O z -o ERR369348.aln.sort.vcf.gz | bcftools index
+samtools mpileup -u -f ref.fa ERR369348.aln.sort.bam | bcftools call -c -O z -o ERR369348.aln.sort.vcf.gz
 
-samtools mpileup -u -f ref.fa ERR338264.aln.sort.bam | bcftools call -c -O z -o ERR338264.aln.sort.vcf.gz | bcftools index
+samtools mpileup -u -f ref.fa ERR338264.aln.sort.bam | bcftools call -c -O z -o ERR338264.aln.sort.vcf.gz
 
-samtools mpileup -u -f ref.fa ERR338265.aln.sort.bam | bcftools call -c -O z -o ERR338265.aln.sort.vcf.gz | bcftools index
+samtools mpileup -u -f ref.fa ERR338265.aln.sort.bam | bcftools call -c -O z -o ERR338265.aln.sort.vcf.gz
 
-samtools mpileup -u -f ref.fa ERR338272.aln.sort.bam | bcftools call -c -O z -o ERR338272.aln.sort.vcf.gz | bcftools index
+samtools mpileup -u -f ref.fa ERR338272.aln.sort.bam | bcftools call -c -O z -o ERR338272.aln.sort.vcf.gz
 
-samtools mpileup -u -f ref.fa ERR338273.aln.sort.bam | bcftools call -c -O z -o ERR338273.aln.sort.vcf.gz | bcftools index
+samtools mpileup -u -f ref.fa ERR338273.aln.sort.bam | bcftools call -c -O z -o ERR338273.aln.sort.vcf.gz
 
-samtools mpileup -u -f ref.fa ERR338280.aln.sort.bam | bcftools call -c -O z -o ERR338280.aln.sort.vcf.gz | bcftools index
+samtools mpileup -u -f ref.fa ERR338280.aln.sort.bam | bcftools call -c -O z -o ERR338280.aln.sort.vcf.gz
 
-samtools mpileup -u -f ref.fa ERR338281.aln.sort.bam | bcftools call -c -O z -o ERR338281.aln.sort.vcf.gz | bcftools index
+samtools mpileup -u -f ref.fa ERR338281.aln.sort.bam | bcftools call -c -O z -o ERR338281.aln.sort.vcf.gz
 
-samtools mpileup -u -f ref.fa ERR338288.aln.sort.bam | bcftools call -c -O z -o ERR338288.aln.sort.vcf.gz | bcftools index
+samtools mpileup -u -f ref.fa ERR338288.aln.sort.bam | bcftools call -c -O z -o ERR338288.aln.sort.vcf.gz
 
-samtools mpileup -u -f ref.fa ERR338255.aln.sort.bam | bcftools call -c -O z -o ERR338255.aln.sort.vcf.gz | bcftools index
+samtools mpileup -u -f ref.fa ERR338255.aln.sort.bam | bcftools call -c -O z -o ERR338255.aln.sort.vcf.gz
+
+# index VCF files
+bcftools index ERR369378.aln.sort.vcf.gz
+
+bcftools index ERR369348.aln.sort.vcf.gz
+
+bcftools index ERR338264.aln.sort.vcf.gz
+
+bcftools index ERR338265.aln.sort.vcf.gz
+
+bcftools index ERR338272.aln.sort.vcf.gz
+
+bcftools index ERR338273.aln.sort.vcf.gz
+
+bcftools index ERR338280.aln.sort.vcf.gz
+
+bcftools index ERR338281.aln.sort.vcf.gz
+
+bcftools index ERR338288.aln.sort.vcf.gz
+
+bcftools index ERR338255.aln.sort.vcf.gz
 
 
-# generate consensus sequence
+# generate consensus sequences
 bcftools consensus -f ref.fa ERR369378.aln.sort.vcf.gz > ERR369378.consensus.fa
 
 bcftools consensus -f ref.fa ERR369348.aln.sort.vcf.gz > ERR369348.consensus.fa
