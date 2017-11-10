@@ -111,7 +111,7 @@ samtools index ERR338288.aln.sort.bam
 samtools index ERR338255.aln.sort.bam
 
 
-# generate genotype likelihoods with `samtools mpileup` and base calls with `bcftools call`, output as VCF;
+# generate genotype likelihoods with `samtools mpileup` and base calls with `bcftools call`, output as VCF
 samtools mpileup -u -f ref.fa ERR369378.aln.sort.bam | bcftools call -c -O z -o ERR369378.aln.sort.vcf.gz
 
 samtools mpileup -u -f ref.fa ERR369348.aln.sort.bam | bcftools call -c -O z -o ERR369348.aln.sort.vcf.gz
@@ -131,6 +131,7 @@ samtools mpileup -u -f ref.fa ERR338281.aln.sort.bam | bcftools call -c -O z -o 
 samtools mpileup -u -f ref.fa ERR338288.aln.sort.bam | bcftools call -c -O z -o ERR338288.aln.sort.vcf.gz
 
 samtools mpileup -u -f ref.fa ERR338255.aln.sort.bam | bcftools call -c -O z -o ERR338255.aln.sort.vcf.gz
+
 
 # index VCF files
 bcftools index ERR369378.aln.sort.vcf.gz
@@ -174,3 +175,73 @@ bcftools consensus -f ref.fa ERR338281.aln.sort.vcf.gz > ERR338281.consensus.fa
 bcftools consensus -f ref.fa ERR338288.aln.sort.vcf.gz > ERR338288.consensus.fa
 
 bcftools consensus -f ref.fa ERR338255.aln.sort.vcf.gz > ERR338255.consensus.fa
+
+
+#ANALYSIS OF ASSEMBLIES
+
+# run QUAST 3.1 on reference-based assemblies using Ensembl MG1655 as reference
+python2.7 /usr/local/quast/3.1/quast.py -o /escratch4/s_11/s_11_Aug_17/project/quast_output -R /escratch4/s_11/s_11_Aug_17/project/ref.fa /escratch4/s_11/s_11_Aug_17/project/ERR369378.consensus.fa /escratch4/s_11/s_11_Aug_17/project/ERR369348.consensus.fa /escratch4/s_11/s_11_Aug_17/project/ERR338264.consensus.fa /escratch4/s_11/s_11_Aug_17/project/ERR338265.consensus.fa /escratch4/s_11/s_11_Aug_17/project/ERR338272.consensus.fa /escratch4/s_11/s_11_Aug_17/project/ERR338273.consensus.fa /escratch4/s_11/s_11_Aug_17/project/ERR338280.consensus.fa /escratch4/s_11/s_11_Aug_17/project/ERR338281.consensus.fa /escratch4/s_11/s_11_Aug_17/project/ERR338288.consensus.fa /escratch4/s_11/s_11_Aug_17/project/ERR338255.consensus.fa
+
+
+# make mummerplots for reference-based assemblies using Ensembl MG1655 as reference
+nucmer -o /escratch4/s_11/s_11_Aug_17/project/ref.fa /escratch4/s_11/s_11_Aug_17/project/ERR369378.consensus.fa -p outputref_ERR369378
+delta-filter -1 outputref_ERR369378.delta > outputref_ERR369378.1delta
+mummerplot --size large -fat --color -f --png outputref_ERR369378.1delta -p outputref_ERR369378
+
+nucmer -o /escratch4/s_11/s_11_Aug_17/project/ref.fa /escratch4/s_11/s_11_Aug_17/project/ERR369348.consensus.fa -p outputref_ERR369348
+delta-filter -1 outputref_ERR369348.delta > outputref_ERR369348.1delta
+mummerplot --size large -fat --color -f --png outputref_ERR369348.1delta -p outputref_ERR369348
+
+nucmer -o /escratch4/s_11/s_11_Aug_17/project/ref.fa /escratch4/s_11/s_11_Aug_17/project/ERR338264.consensus.fa -p outputref_ERR338264
+delta-filter -1 outputref_ERR338264.delta > outputref_ERR338264.1delta
+mummerplot --size large -fat --color -f --png outputref_ERR338264.1delta -p outputref_ERR338264
+
+nucmer -o /escratch4/s_11/s_11_Aug_17/project/ref.fa /escratch4/s_11/s_11_Aug_17/project/ERR338265.consensus.fa -p outputref_ERR338265
+delta-filter -1 outputref_ERR338265.delta > outputref_ERR338265.1delta
+mummerplot --size large -fat --color -f --png outputref_ERR338265.1delta -p outputref_ERR338265
+
+nucmer -o /escratch4/s_11/s_11_Aug_17/project/ref.fa /escratch4/s_11/s_11_Aug_17/project/ERR338272.consensus.fa -p outputref_ERR338272
+delta-filter -1 outputref_ERR338272.delta > outputref_ERR338272.1delta
+mummerplot --size large -fat --color -f --png outputref_ERR338272.1delta -p outputref_ERR338272
+
+nucmer -o /escratch4/s_11/s_11_Aug_17/project/ref.fa /escratch4/s_11/s_11_Aug_17/project/ERR338273.consensus.fa -p outputref_ERR338273
+delta-filter -1 outputref_ERR338273.delta > outputref_ERR338273.1delta
+mummerplot --size large -fat --color -f --png outputref_ERR338273.1delta -p outputref_ERR338273
+
+nucmer -o /escratch4/s_11/s_11_Aug_17/project/ref.fa /escratch4/s_11/s_11_Aug_17/project/ERR338280.consensus.fa -p outputref_ERR338280
+delta-filter -1 outputref_ERR338280.delta > outputref_ERR338280.1delta
+mummerplot --size large -fat --color -f --png outputref_ERR338280.1delta -p outputref_ERR338280
+
+nucmer -o /escratch4/s_11/s_11_Aug_17/project/ref.fa /escratch4/s_11/s_11_Aug_17/project/ERR338281.consensus.fa -p outputref_ERR338281
+delta-filter -1 outputref_ERR338281.delta > outputref_ERR338281.1delta
+mummerplot --size large -fat --color -f --png outputref_ERR338281.1delta -p outputref_ERR338281
+
+nucmer -o /escratch4/s_11/s_11_Aug_17/project/ref.fa /escratch4/s_11/s_11_Aug_17/project/ERR338288.consensus.fa -p outputref_ERR338288
+delta-filter -1 outputref_ERR338288.delta > outputref_ERR338288.1delta
+mummerplot --size large -fat --color -f --png outputref_ERR338288.1delta -p outputref_ERR338288
+
+nucmer -o /escratch4/s_11/s_11_Aug_17/project/ref.fa /escratch4/s_11/s_11_Aug_17/project/ERR338255.consensus.fa -p outputref_ERR338255
+delta-filter -1 outputref_ERR338255.delta > outputref_ERR338255.1delta
+mummerplot --size large -fat --color -f --png outputref_ERR338255.1delta -p outputref_ERR338255
+
+
+# generate Prokka genome annotations for reference-based assemblies using Ensembl MG1655 as reference
+prokka /escratch4/s_11/s_11_Aug_17/project/ERR369378.consensus.fa --outdir prokka_ERR369378
+
+prokka /escratch4/s_11/s_11_Aug_17/project/ERR369348.consensus.fa --outdir prokka_ERR369348
+
+prokka /escratch4/s_11/s_11_Aug_17/project/ERR338264.consensus.fa --outdir prokka_ERR338264
+
+prokka /escratch4/s_11/s_11_Aug_17/project/ERR338265.consensus.fa --outdir prokka_ERR338265
+
+prokka /escratch4/s_11/s_11_Aug_17/project/ERR338272.consensus.fa --outdir prokka_ERR338272
+
+prokka /escratch4/s_11/s_11_Aug_17/project/ERR338273.consensus.fa --outdir prokka_ERR338273
+
+prokka /escratch4/s_11/s_11_Aug_17/project/ERR338280.consensus.fa --outdir prokka_ERR338280
+
+prokka /escratch4/s_11/s_11_Aug_17/project/ERR338281.consensus.fa --outdir prokka_ERR338281
+
+prokka /escratch4/s_11/s_11_Aug_17/project/ERR338288.consensus.fa --outdir prokka_ERR338288
+
+prokka /escratch4/s_11/s_11_Aug_17/project/ERR338255.consensus.fa --outdir prokka_ERR338255
