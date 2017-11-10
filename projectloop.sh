@@ -1,6 +1,11 @@
 #!/bin/bash
+#$ -pe thread 4
 
 cd /escratch4/s_11/s_11_Aug_17/project
+
+#path for reference assembly executables
+export PATH=/usr/local/samtools/1.2/:$PATH
+export PATH=/usr/local/bwa/0.7.10/:$PATH
 
 # get reference genome
 wget -q -O ref.fa.gz ftp://ftp.ensemblgenomes.org/pub/bacteria/release-37/fasta/bacteria_4_collection/salmonella_enterica_subsp_enterica_serovar_enteritidis_str_p125109/dna/Salmonella_enterica_subsp_enterica_serovar_enteritidis_str_p125109.ASM950v1.dna.chromosome.Chromosome.fa.gz
