@@ -42,7 +42,7 @@ wget -q -O ERR338255_2.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR338/ERR338
 # create index of reference genome for BWA
 bwa index ref.fa
 
-for i in ERR369378 ERR369348 ERR338264
+for i in ERR369378 ERR369348 ERR338264 ERR338265 ERR338272 ERR338273 ERR338280 ERR338281 ERR338288 ERR338255
 do
   # map reads to reference with BWA & output as BAM file
   bwa mem -t 4 ref.fa ${i}_1.fastq.gz ${i}_2.fastq.gz | samtools view -b - > ${i}.aln.bam
