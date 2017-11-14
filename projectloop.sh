@@ -69,15 +69,9 @@ do
 
   #ANALYSIS OF ASSEMBLIES
 
-  # run QUAST 3.1 on reference-based assemblies using reference
-  python2.7 /usr/local/quast/3.1/quast.py -o /escratch4/s_11/s_11_Aug_17/project/quast_output -R /escratch4/s_11/s_11_Aug_17/project/ref.fa /escratch4/s_11/s_11_Aug_17/project/${i}.consensus.fa
-
-  # make mummerplots for reference-based assemblies using Ensembl MG1655 as reference
-  nucmer -o /escratch4/s_11/s_11_Aug_17/project/ref.fa /escratch4/s_11/s_11_Aug_17/project/${i}.consensus.fa -p outputref_${i}
-  delta-filter -1 outputref_${i}.delta > outputref_${i}.1delta
-  mummerplot --size large -fat --color -f --png outputref_${i}.1delta -p outputref_${i}
-
-  # generate Prokka genome annotations for reference-based assemblies using Ensembl MG1655 as reference
-  prokka /escratch4/s_11/s_11_Aug_17/project/${i}.consensus.fa --outdir prokka_${i}
 
 done
+
+# run RAxML GTR with + I + G model and 100 bootstrap pseudoreplicate analyses of the alignment data
+
+/usr/local/raxml/latest/raxmlHPC-PTHREADS -T 8 -f a -x 12345 -p 4523 -m GTRGAMMA -n p53 -s nt.fasta.alter.phy -# 100
