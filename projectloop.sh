@@ -9,7 +9,7 @@ export PATH=/usr/local/bwa/0.7.10/:$PATH
 
 # path for RAxML
 export PATH=/usr/local/raxml/8.2.4/:$PATH
- 
+
 # get reference genome
 wget -q -O ref.fa.gz ftp://ftp.ensemblgenomes.org/pub/bacteria/release-37/fasta/bacteria_4_collection/salmonella_enterica_subsp_enterica_serovar_enteritidis_str_p125109/dna/Salmonella_enterica_subsp_enterica_serovar_enteritidis_str_p125109.ASM950v1.dna.chromosome.Chromosome.fa.gz
 curl -s "https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession=PRJEB634&result=read_run&fields=study_accession,sample_accession,secondary_sample_accession,sample_alias,experiment_accession,run_accession,scientific_name,instrument_model,library_layout,library_source,library_selection,read_count,base_count,experiment_title,fastq_ftp" | grep -v PacBio > meta.tsv
@@ -75,4 +75,4 @@ done
 
 # run RAxML GTR with + I + G model and 100 bootstrap pseudoreplicate analyses of the alignment data
 
-/usr/local/raxml/latest/raxmlHPC-PTHREADS -T 8 -f a -x 12345 -p 4523 -m GTRGAMMA -n p53 -s nt.fasta.alter.phy -# 100
+/usr/local/raxml/latest/raxmlHPC-PTHREADS -T 6 -f a -x 12345 -p 4523 -m GTRGAMMA -n enteritidis -s alignmentfile.phy -# 100
