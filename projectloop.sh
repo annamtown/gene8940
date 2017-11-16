@@ -78,4 +78,4 @@ cat /escratch4/s_11/s_11_Aug_17/project/*.consensus.fa > /escratch4/s_11/s_11_Au
 
 # run RAxML GTR with + I + G model and 100 bootstrap pseudoreplicate analyses of the alignment data
 
-/usr/local/raxml/latest/raxmlHPC-PTHREADS -T 6 -f a -x 12345 -p 4523 -m GTRGAMMA -n enteritidis -s allconsensus.fasta -# 100
+raxmlHPC-PTHREADS -T 6 -f a -x 12345 -p 4523 -m GTRGAMMA -n enteritidis -s allconsensus.fasta -# 100
