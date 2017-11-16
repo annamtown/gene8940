@@ -69,7 +69,7 @@ do
   bcftools index ${i}.aln.sort.vcf.gz
 
   # generate consensus sequences
-  bcftools consensus -f ref.fa ${i}.aln.sort.vcf.gz > ${i}.consensus.fa
+  bcftools consensus -f ref.fa ${i}.aln.sort.vcf.gz | sed "s/>.*/>$i/g" > ${i}.consensus.fa
 
 done
 
