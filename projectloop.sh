@@ -77,5 +77,13 @@ done
 cat /escratch4/s_11/s_11_Aug_17/project/*.consensus.fa > /escratch4/s_11/s_11_Aug_17/project/allconsensus.fasta
 
 # run RAxML GTR with + I + G model and 100 bootstrap pseudoreplicate analyses of the alignment data
-
-raxmlHPC-PTHREADS -T 6 -f a -x 12345 -p 4523 -m GTRGAMMA -n enteritidis -s allconsensus.fasta -# 100
+#-T is number of threads
+#-f a is rapid Bootstrap analysis and search for best­scoring ML tree in one program run 
+#-G enables the ML­based evolutionary placement algorithm heuristics by specifying a threshold value of 0.1 (10% of branches considered for thorough insertions)
+#-I is a posteriori bootstopping analysis
+#-x specifies an integer number (random seed) and turn on rapid bootstrapping
+#-p specifies a random number seed for the parsimony inferences
+#-m is the model
+#-n is the name of the new files
+#-s is the input file
+raxmlHPC-PTHREADS -T 6 -f a -G 0.1 -x 12345 -p 4523 -m GTRGAMMA ­-I autoFC -n enteritidis -s allconsensus.fasta -# 100
