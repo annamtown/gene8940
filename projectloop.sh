@@ -73,6 +73,9 @@ do
 
 done
 
+# concatenate consensus files into one multi-fasta files
+cat /escratch4/s_11/s_11_Aug_17/project/*.consensus.fa > /escratch4/s_11/s_11_Aug_17/project/allconsensus.fasta
+
 # run RAxML GTR with + I + G model and 100 bootstrap pseudoreplicate analyses of the alignment data
 
-/usr/local/raxml/latest/raxmlHPC-PTHREADS -T 6 -f a -x 12345 -p 4523 -m GTRGAMMA -n enteritidis -s alignmentfile.phy -# 100
+/usr/local/raxml/latest/raxmlHPC-PTHREADS -T 6 -f a -x 12345 -p 4523 -m GTRGAMMA -n enteritidis -s allconsensus.fasta -# 100
