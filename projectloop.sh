@@ -7,6 +7,11 @@ cd /escratch4/s_11/s_11_Aug_17/project
 export PATH=/usr/local/samtools/1.2/:$PATH
 export PATH=/usr/local/bwa/0.7.10/:$PATH
 
+# path for emboss
+export PATH=/usr/local/emboss/6.5.7/:$PATH
+
+# path for RAxML
+export PATH=/usr/local/raxml/8.2.4/:$PATH
 
 # get reference genome
 wget -q -O ref.fa.gz ftp://ftp.ensemblgenomes.org/pub/bacteria/release-37/fasta/bacteria_4_collection/salmonella_enterica_subsp_enterica_serovar_enteritidis_str_p125109/dna/Salmonella_enterica_subsp_enterica_serovar_enteritidis_str_p125109.ASM950v1.dna.chromosome.Chromosome.fa.gz
@@ -76,10 +81,9 @@ done
 cat /escratch4/s_11/s_11_Aug_17/project/*.consensus.fa > /escratch4/s_11/s_11_Aug_17/project/allconsensus.fasta
 
 
-cd /escratch4/s_11/s_11_Aug_17/project
+# convert allconsensus.fasta to .phy format
+/usr/local/emboss/latest/bin/seqret -sequence fasta::allconsensus.fasta -outseq phylip::allconsensus.phy
 
-# path for RAxML
-export PATH=/usr/local/raxml/8.2.4/:$PATH
 
 # run RAxML GTR with + I + G model and 100 bootstrap pseudoreplicate analyses of the alignment data
 #-T is number of threads
