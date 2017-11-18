@@ -7,8 +7,8 @@ cd /escratch4/s_11/s_11_Aug_17/project
 export PATH=/usr/local/samtools/1.2/:$PATH
 export PATH=/usr/local/bwa/0.7.10/:$PATH
 
-# path for emboss
-export PATH=/usr/local/emboss/6.5.7/:$PATH
+# path for emboss points to version 6.5.7
+export PATH=/usr/local/emboss/latest/bin/:$PATH
 
 # path for RAxML
 export PATH=/usr/local/raxml/8.2.4/:$PATH
@@ -82,7 +82,7 @@ cat /escratch4/s_11/s_11_Aug_17/project/*.consensus.fa > /escratch4/s_11/s_11_Au
 
 
 # convert allconsensus.fasta to .phy format
-/usr/local/emboss/latest/bin/seqret -sequence fasta::allconsensus.fasta -outseq phylip::allconsensus.phy
+seqret -sequence fasta::allconsensus.fasta -outseq phylip::allconsensus.phy
 
 
 # run RAxML GTR with + I + G model and 100 bootstrap pseudoreplicate analyses of the alignment data
