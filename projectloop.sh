@@ -95,4 +95,4 @@ seqret -sequence fasta::allconsensus.fasta -outseq phylip::allconsensus.phy
 #-m is the model
 #-n is the name of the new files
 #-s is the input file
-/usr/local/raxml/latest/raxmlHPC-PTHREADS -T 6 -f a -G 0.1 -x 12345 -p 4523 -m GTRGAMMA ­-I autoFC --no-bfgs -n enteritidis -s allconsensus.phy -# 100
+/usr/local/raxml/latest/raxmlHPC-PTHREADS -T 6 -f a -x 12345 -p 4523 -m GTRGAMMAI -n enteritidis -s allconsensus.phy -# 100
