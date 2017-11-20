@@ -1,7 +1,7 @@
 #!/bin/bash
 #$ -pe thread 4
 
-cd /escratch4/s_11/s_11_Aug_17/project
+cd /escratch4/s_11/s_11_Aug_17/project2
 
 #path for reference assembly executables
 export PATH=/usr/local/samtools/1.2/:$PATH
@@ -52,7 +52,7 @@ done
 
 
 # concatenate consensus files into one multi-fasta files
-cat /escratch4/s_11/s_11_Aug_17/project/*.consensus.fa > /escratch4/s_11/s_11_Aug_17/project/allconsensus.fasta
+cat /escratch4/s_11/s_11_Aug_17/project2/*.consensus.fa > /escratch4/s_11/s_11_Aug_17/project2/allconsensus.fasta
 
 
 # convert allconsensus.fasta to .phy format
