@@ -21,41 +21,45 @@ curl -s "https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession=PRJEB634&
 gunzip -c ref.fa.gz > ref.fa
 
 # download isolates' DNA from EBI as fastq
-wget -q -O ERR369378_1.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR369/ERR369378/ERR369378_1.fastq.gz
-wget -q -O ERR369378_2.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR369/ERR369378/ERR369378_2.fastq.gz
+#wget -q -O ERR369378_1.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR369/ERR369378/ERR369378_1.fastq.gz
+#wget -q -O ERR369378_2.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR369/ERR369378/ERR369378_2.fastq.gz
 
-wget -q -O ERR369348_1.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR369/ERR369348/ERR369348_1.fastq.gz
-wget -q -O ERR369348_2.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR369/ERR369348/ERR369348_2.fastq.gz
+#wget -q -O ERR369348_1.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR369/ERR369348/ERR369348_1.fastq.gz
+#wget -q -O ERR369348_2.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR369/ERR369348/ERR369348_2.fastq.gz
 
-wget -q -O ERR338264_1.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR338/ERR338264/ERR338264_1.fastq.gz
-wget -q -O ERR338264_2.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR338/ERR338264/ERR338264_2.fastq.gz
+#wget -q -O ERR338264_1.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR338/ERR338264/ERR338264_1.fastq.gz
+#wget -q -O ERR338264_2.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR338/ERR338264/ERR338264_2.fastq.gz
 
-wget -q -O ERR338265_1.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR338/ERR338265/ERR338265_1.fastq.gz
-wget -q -O ERR338265_2.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR338/ERR338265/ERR338265_2.fastq.gz
+#wget -q -O ERR338265_1.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR338/ERR338265/ERR338265_1.fastq.gz
+#wget -q -O ERR338265_2.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR338/ERR338265/ERR338265_2.fastq.gz
 
-wget -q -O ERR338272_1.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR338/ERR338272/ERR338272_1.fastq.gz
-wget -q -O ERR338272_2.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR338/ERR338272/ERR338272_2.fastq.gz
+#wget -q -O ERR338272_1.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR338/ERR338272/ERR338272_1.fastq.gz
+#wget -q -O ERR338272_2.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR338/ERR338272/ERR338272_2.fastq.gz
 
-wget -q -O ERR338273_1.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR338/ERR338273/ERR338273_1.fastq.gz
-wget -q -O ERR338273_2.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR338/ERR338273/ERR338273_2.fastq.gz
+#wget -q -O ERR338273_1.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR338/ERR338273/ERR338273_1.fastq.gz
+#wget -q -O ERR338273_2.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR338/ERR338273/ERR338273_2.fastq.gz
 
-wget -q -O ERR338280_1.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR338/ERR338280/ERR338280_1.fastq.gz
-wget -q -O ERR338280_2.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR338/ERR338280/ERR338280_2.fastq.gz
+#wget -q -O ERR338280_1.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR338/ERR338280/ERR338280_1.fastq.gz
+#wget -q -O ERR338280_2.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR338/ERR338280/ERR338280_2.fastq.gz
 
-wget -q -O ERR338281_1.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR338/ERR338281/ERR338281_1.fastq.gz
-wget -q -O ERR338281_2.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR338/ERR338281/ERR338281_2.fastq.gz
+#wget -q -O ERR338281_1.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR338/ERR338281/ERR338281_1.fastq.gz
+#wget -q -O ERR338281_2.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR338/ERR338281/ERR338281_2.fastq.gz
 
-wget -q -O ERR338288_1.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR338/ERR338288/ERR338288_1.fastq.gz
-wget -q -O ERR338288_2.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR338/ERR338288/ERR338288_2.fastq.gz
+#wget -q -O ERR338288_1.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR338/ERR338288/ERR338288_1.fastq.gz
+#wget -q -O ERR338288_2.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR338/ERR338288/ERR338288_2.fastq.gz
 
-wget -q -O ERR338255_1.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR338/ERR338255/ERR338255_1.fastq.gz
-wget -q -O ERR338255_2.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR338/ERR338255/ERR338255_2.fastq.gz
+#wget -q -O ERR338255_1.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR338/ERR338255/ERR338255_1.fastq.gz
+#wget -q -O ERR338255_2.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR338/ERR338255/ERR338255_2.fastq.gz
 
 # create index of reference genome for BWA
 bwa index ref.fa
 
 for i in ERR369378 ERR369348 ERR338264 ERR338265 ERR338272 ERR338273 ERR338280 ERR338281 ERR338288 ERR338255
 do
+  # get reads from EBI
+  wget -q -O ${i}_1.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${i:0:6}/${i}/${i}_1.fastq.gz
+  wget -q -O ${i}_2.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${i:0:6}/${i}/${i}_2.fastq.gz
+
   # map reads to reference with BWA & output as BAM file
   bwa mem -t 4 ref.fa ${i}_1.fastq.gz ${i}_2.fastq.gz | samtools view -b - > ${i}.aln.bam
 
