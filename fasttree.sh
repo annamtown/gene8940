@@ -1,4 +1,3 @@
-#run fasttree
 
 #!/bin/bash
 
