@@ -70,7 +70,7 @@ do
   samtools index ${i}.aln.sort.bam
 
   # generate genotype likelihoods with `samtools mpileup` and base calls with `bcftools call`, output as VCF
-  samtools mpileup -u -f ref.fa ${i}.aln.sort.bam | bcftools call -c -O z -o ${i}.aln.sort.vcf.gz
+  samtools mpileup -I -u -f ref.fa ${i}.aln.sort.bam | bcftools call -c -O z -o ${i}.aln.sort.vcf.gz
 
   # index VCF files
   bcftools index ${i}.aln.sort.vcf.gz
