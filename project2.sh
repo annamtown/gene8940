@@ -1,5 +1,5 @@
 #!/bin/bash
-#$ -pe thread 4
+#$ -pe thread 6
 
 cd /escratch4/s_11/s_11_Aug_17/allsample
 
